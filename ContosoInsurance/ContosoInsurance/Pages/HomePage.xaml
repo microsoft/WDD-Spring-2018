@@ -1,0 +1,218 @@
+﻿<Page x:Class="ContosoInsurance.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:helper="using:ContosoInsurance.Helper"
+      xmlns:local="using:ContosoInsurance.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+      mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot" Margin="52">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.ColumnSpan="4">
+            <TextBlock x:Name="WelcomeTitle"
+                       Margin="0,0,0,12"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource DarkGrey}"
+                       TextWrapping="WrapWholeWords">
+                <Run Text="Welcome back," />
+                <Run Foreground="{StaticResource DarkGrey}" Text="Justin" />
+            </TextBlock>
+
+            <TextBlock x:Name="WelcomeMessage"
+                       MaxWidth="320"
+                       Margin="0,0,0,48"
+                       FontSize="16"
+                       Foreground="{StaticResource Offwhite}"
+                       RelativePanel.Below="WelcomeTitle"
+                       Text="You have closed all your existing cases for the past 7 days. Well done!"
+                       TextWrapping="WrapWholeWords" />
+
+            <FontIcon x:Name="CalendarIcon"
+                      HorizontalAlignment="Left"
+                      FontFamily="Segoe MDL2 Assets"
+                      Foreground="{StaticResource DarkGrey80}"
+                      Glyph="&#xE787;"
+                      RelativePanel.Below="WelcomeMessage" />
+
+            <TextBlock x:Name="DateText"
+                       Margin="12,0,0,0"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource DarkGrey80}"
+                       RelativePanel.AlignVerticalCenterWith="CalendarIcon"
+                       RelativePanel.Below="WelcomeMessage"
+                       RelativePanel.RightOf="CalendarIcon"
+                       Text="Feb 12 - Feb 18"
+                       TextLineBounds="Tight" />
+
+            <Grid x:Name="NoOfCasesPanel"
+                  Margin="0,24,0,0"
+                  RelativePanel.Below="CalendarIcon">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="56"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource DarkGrey}"
+                           OpticalMarginAlignment="TrimSideBearings"
+                           Text="42"
+                           TextLineBounds="Tight" />
+
+                <TextBlock Grid.Column="1"
+                           Margin="0,0,0,24"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontSize="16"
+                           Foreground="{StaticResource Offwhite}"
+                           Text="cases"
+                           TextWrapping="WrapWholeWords" />
+
+                <TextBlock Grid.Column="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           FontSize="16"
+                           Foreground="{StaticResource Offwhite}"
+                           Text="closed"
+                           TextWrapping="WrapWholeWords" />
+            </Grid>
+
+            <Grid x:Name="NoOfAdjustersPanel"
+                  Margin="48,24,0,0"
+                  RelativePanel.Below="CalendarIcon"
+                  RelativePanel.RightOf="NoOfCasesPanel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="56"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource DarkGrey}"
+                           OpticalMarginAlignment="TrimSideBearings"
+                           Text="19"
+                           TextLineBounds="Tight" />
+
+                <TextBlock Grid.Column="1"
+                           Margin="0,0,0,24"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontSize="16"
+                           Foreground="{StaticResource Offwhite}"
+                           Text="adjusters"
+                           TextWrapping="WrapWholeWords" />
+
+                <TextBlock Grid.Column="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           FontSize="16"
+                           Foreground="{StaticResource Offwhite}"
+                           Text="assigned"
+                           TextWrapping="WrapWholeWords" />
+            </Grid>
+
+            <RelativePanel Margin="0,24,-80,0"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.Below="WelcomeMessage">
+
+                <TextBlock x:Name="NotificationTitle"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           Text="New Timetable is here"
+                           TextLineBounds="Tight" />
+
+                <FontIcon Margin="8,-3,0,0"
+                          FontFamily="Segoe MDL2 Assets"
+                          Foreground="White"
+                          Glyph="&#xEA62;"
+                          RelativePanel.RightOf="NotificationTitle" />
+
+                <Rectangle x:Name="NotificationSeparator"
+                           Height="3"
+                           Margin="-4,12"
+                           Fill="{StaticResource LightGrey}"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.Below="NotificationTitle" />
+
+                <TextBlock MaxWidth="240"
+                           Margin="0,0,64,0"
+                           FontSize="16"
+                           Foreground="{StaticResource Offwhite}"
+                           RelativePanel.Below="NotificationSeparator"
+                           Text="Time to try our new app! There will be 3 training sessions available. Please complete them by the end of month."
+                           TextWrapping="WrapWholeWords" />
+            </RelativePanel>
+        </RelativePanel>
+
+        <RelativePanel Grid.Row="1" Grid.ColumnSpan="3">
+            <FontIcon x:Name="PerformanceIcon"
+                      HorizontalAlignment="Left"
+                      FontFamily="Segoe MDL2 Assets"
+                      Foreground="{StaticResource DarkGrey80}"
+                      Glyph="&#xEC4A;" />
+
+            <TextBlock x:Name="PerformanceText"
+                       Margin="12,0,0,0"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource DarkGrey80}"
+                       RelativePanel.AlignVerticalCenterWith="PerformanceIcon"
+                       RelativePanel.RightOf="PerformanceIcon"
+                       Text="Team Performance"
+                       TextLineBounds="Tight" />
+
+            <telerikChart:RadCartesianChart x:Name="BarChart"
+                                            Margin="0,-24,0,0"
+                                            EmptyContent=""
+                                            RelativePanel.Below="PerformanceIcon">
+                <telerikChart:RadCartesianChart.ContainerVisualsFactory>
+                    <helper:AnimationContainerVisualsFactory />
+                </telerikChart:RadCartesianChart.ContainerVisualsFactory>
+
+                <telerikChart:RadCartesianChart.Palette>
+                    <telerikChart:ChartPalette>
+                        <telerikChart:ChartPalette.FillEntries>
+                            <telerikChart:PaletteEntryCollection>
+                                <SolidColorBrush Color="{StaticResource yellow}" />
+                            </telerikChart:PaletteEntryCollection>
+                        </telerikChart:ChartPalette.FillEntries>
+                    </telerikChart:ChartPalette>
+                </telerikChart:RadCartesianChart.Palette>
+
+                <telerikChart:RadCartesianChart.HorizontalAxis>
+                    <telerikChart:CategoricalAxis ShowLabels="False" TickThickness="0">
+                        <telerikChart:CategoricalAxis.LineStyle>
+                            <Style TargetType="Line">
+                                <Setter Property="Stroke" Value="Transparent" />
+                            </Style>
+                        </telerikChart:CategoricalAxis.LineStyle>
+                    </telerikChart:CategoricalAxis>
+                </telerikChart:RadCartesianChart.HorizontalAxis>
+                <telerikChart:RadCartesianChart.VerticalAxis>
+                    <telerikChart:LinearAxis ShowLabels="False" TickThickness="0">
+                        <telerikChart:LinearAxis.LineStyle>
+                            <Style TargetType="Line">
+                                <Setter Property="Stroke" Value="Transparent" />
+                            </Style>
+                        </telerikChart:LinearAxis.LineStyle>
+                    </telerikChart:LinearAxis>
+                </telerikChart:RadCartesianChart.VerticalAxis>
+                <telerikChart:BarSeries ItemsSource="{Binding}" />
+            </telerikChart:RadCartesianChart>
+        </RelativePanel>
+    </Grid>
+</Page>

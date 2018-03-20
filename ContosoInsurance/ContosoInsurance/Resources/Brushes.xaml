@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:ContosoInsurance">
+
+    <Color x:Key="lightBlue">#FF06D1FE</Color>
+    <Color x:Key="darkBlue">#FF3E4244</Color>
+    <Color x:Key="yellow">#E5FED506</Color>
+    <Color x:Key="fallback">#66000000</Color>
+
+    <SolidColorBrush x:Key="Offwhite" Color="#CCFFFFFF" />
+    <!--  #992D2D2D  -->
+    <SolidColorBrush x:Key="DarkGrey" Color="#FF102327" />
+    <SolidColorBrush x:Key="DarkGrey80" Color="#CC102327" />
+    <SolidColorBrush x:Key="DarkGrey60" Color="#99102327" />
+    <SolidColorBrush x:Key="LightGrey" Color="#FFB6D2D6" />
+    <SolidColorBrush x:Key="LightBlue" Color="{StaticResource lightBlue}" />
+    <SolidColorBrush x:Key="Blue" Color="#FF126493" />
+    <SolidColorBrush x:Key="Black10" Color="#19000000" />
+    <SolidColorBrush x:Key="Black20" Color="#33000000" />
+    <SolidColorBrush x:Key="DarkRed" Color="#FFDE284F" />
+    <SolidColorBrush x:Key="Red" Color="#FFDB4867" />
+    <SolidColorBrush x:Key="Red80" Color="#CCDB4867" />
+    <SolidColorBrush x:Key="Green" Color="#FF51CF17" />
+    <SolidColorBrush x:Key="Green80" Color="#CC51CF17" />
+
+    <AcrylicBrush x:Key="InAppBackgroundAcrylicBrush"
+                  BackgroundSource="Backdrop"
+                  FallbackColor="{StaticResource fallback}"
+                  TintColor="Black"
+                  TintOpacity="0.1" />
+</ResourceDictionary>

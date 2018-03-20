@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ContosoInsurance.Controls.GenderIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:ContosoInsurance.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="Self"
+             d:DesignHeight="300"
+             d:DesignWidth="400"
+             mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot">
+        <FontIcon x:Name="FemaleIcon"
+                  x:Load="False"
+                  FontFamily="Segoe MDL2 Assets"
+                  Foreground="{x:Bind Self.Foreground, Mode=OneWay}"
+                  Glyph="&#xED53;" />
+        <FontIcon x:Name="MaleIcon"
+                  x:Load="False"
+                  FontFamily="Segoe MDL2 Assets"
+                  Foreground="{x:Bind Self.Foreground, Mode=OneWay}"
+                  Glyph="&#xED54;" />
+    </Grid>
+</UserControl>

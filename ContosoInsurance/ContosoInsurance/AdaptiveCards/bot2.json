@@ -1,0 +1,37 @@
+﻿{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "\"Any specific team you want to select from?\"",
+          "weight": "bolder",
+          "size": "medium",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "TEAM A",
+      "data": { "x": "a" }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "TEAM B",
+      "data": { "x": "b" }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "ANY TEAM",
+      "data": { "x": "c" }
+    }
+  ]
+}

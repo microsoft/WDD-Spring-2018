@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ContosoInsurance.Controls">
+
+    <Style TargetType="controls:AnimatedTextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:AnimatedTextBlock">
+                    <Grid x:Name="Root">
+                        <TextBlock x:Name="OldTextBlock"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                   TextLineBounds="{TemplateBinding TextLineBounds}" />
+                        <TextBlock x:Name="NewTextBlock"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                   TextLineBounds="{TemplateBinding TextLineBounds}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

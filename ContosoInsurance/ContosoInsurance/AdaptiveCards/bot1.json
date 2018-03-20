@@ -1,0 +1,32 @@
+﻿{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "\"Select an adjuster based on his/her current workload or distance to the owner's home?\"",
+          "weight": "bolder",
+          "size": "medium",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "DISTANCE",
+      "data": { "x": "a" }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "WORKLOAD",
+      "data": { "x": "b" }
+    }
+  ]
+}

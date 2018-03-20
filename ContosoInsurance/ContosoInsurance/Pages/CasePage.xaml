@@ -1,0 +1,231 @@
+﻿<Page x:Class="ContosoInsurance.Pages.CasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+      xmlns:controls="using:ContosoInsurance.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <RelativePanel x:Name="LayoutRoot" Margin="52,0,52,52">
+        <Button x:Name="BackButton"
+                Margin="-44,-8,0,0"
+                Click="OnBackButtonClick"
+                Style="{StaticResource IconButtonStyle}">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC52;" />
+        </Button>
+        <Ellipse x:Name="Avatar"
+                 Width="64"
+                 Height="64"
+                 Margin="16,16,12,16"
+                 animations:Connected.Key="listItem"
+                 RelativePanel.Below="BackButton"
+                 Stroke="{StaticResource LightGrey}"
+                 StrokeThickness="2">
+            <Ellipse.Fill>
+                <ImageBrush>
+                    <ImageBrush.ImageSource>
+                        <BitmapImage UriSource="{x:Bind Case.AvatarUri}" />
+                    </ImageBrush.ImageSource>
+                </ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <TextBlock x:Name="NameText"
+                   Margin="12,20,0,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   animations:Connected.AnchorElement="{x:Bind Avatar}"
+                   FontSize="20"
+                   FontWeight="SemiBold"
+                   Foreground="{StaticResource DarkGrey}"
+                   RelativePanel.AlignTopWith="Avatar"
+                   RelativePanel.RightOf="Avatar"
+                   Text="{x:Bind Case.FullName}" />
+
+        <TextBlock x:Name="IdText"
+                   Margin="12,0,0,24"
+                   VerticalAlignment="Top"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   Foreground="{StaticResource DarkGrey80}"
+                   RelativePanel.AlignBottomWith="Avatar"
+                   RelativePanel.AlignLeftWith="NameText"
+                   Text="{x:Bind Case.Id}"
+                   TextLineBounds="Tight" />
+
+        <controls:CaseTypeDisplay Margin="12,0,0,24"
+                                  CaseType="{x:Bind Case.Type}"
+                                  RelativePanel.AlignVerticalCenterWith="IdText"
+                                  RelativePanel.RightOf="IdText" />
+
+        <Grid x:Name="AddressPanel"
+              Margin="0,40,0,0"
+              RelativePanel.Below="IdText">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <FontIcon Margin="24,0,8,2"
+                      FontFamily="Segoe MDL2 Assets"
+                      Foreground="{StaticResource LightGrey}"
+                      Glyph="&#xE1C3;" />
+
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,0,6"
+                       VerticalAlignment="Bottom"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource LightGrey}"
+                       Text="Home Address"
+                       TextLineBounds="Tight" />
+            <TextBlock Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Margin="24,8,24,0"
+                       FontSize="18"
+                       Foreground="{StaticResource DarkGrey}"
+                       Text="{x:Bind Case.Address1}" />
+            <TextBlock Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       Margin="24,0,24,12"
+                       FontSize="18"
+                       Foreground="{StaticResource DarkGrey}"
+                       Text="{x:Bind Case.Address2}" />
+        </Grid>
+
+        <Grid x:Name="ContactPanel"
+              Margin="0,12,0,0"
+              RelativePanel.Below="AddressPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <FontIcon Margin="24,0,8,2"
+                      FontFamily="Segoe MDL2 Assets"
+                      Foreground="{StaticResource LightGrey}"
+                      Glyph="&#xE780;" />
+
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,0,6"
+                       VerticalAlignment="Bottom"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource LightGrey}"
+                       Text="Phone"
+                       TextLineBounds="Tight" />
+            <TextBlock Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Margin="24,8,0,12"
+                       VerticalAlignment="Top"
+                       FontSize="18"
+                       Foreground="{StaticResource DarkGrey}"
+                       Text="{x:Bind Case.Phone}" />
+        </Grid>
+
+        <Grid x:Name="NotePanel"
+              Margin="0,12,0,0"
+              RelativePanel.Below="ContactPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <FontIcon Margin="24,0,8,2"
+                      FontFamily="Segoe MDL2 Assets"
+                      Foreground="{StaticResource LightGrey}"
+                      Glyph="&#xEC42;" />
+
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,0,6"
+                       VerticalAlignment="Bottom"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource LightGrey}"
+                       Text="Notes"
+                       TextLineBounds="Tight" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       MaxWidth="320"
+                       Margin="24,8,0,12"
+                       VerticalAlignment="Top"
+                       FontSize="16"
+                       Foreground="{StaticResource DarkGrey80}"
+                       Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
+                       TextWrapping="WrapWholeWords" />
+        </Grid>
+
+        <Grid x:Name="MessagePanel"
+              Width="312"
+              Margin="200,16,20,48"
+              Padding="24"
+              extensions:VisualExtensions.NormalizedCenterPoint="0.5,0.5,0"
+              Background="{StaticResource LightBlue}"
+              Opacity="0.9"
+              RelativePanel.Below="BackButton"
+              RelativePanel.RightOf="AddressPanel"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation Delay="0:0:1"
+                                                 SetInitialValueBeforeDelay="True"
+                                                 From="0,-12,0"
+                                                 To="0,0,0"
+                                                 Duration="0:0:0.8" />
+                <animations:ScaleAnimation Delay="0:0:1"
+                                           SetInitialValueBeforeDelay="True"
+                                           From="0.8"
+                                           To="1"
+                                           Duration="0:0:0.8" />
+                <animations:OpacityAnimation Delay="0:0:1"
+                                             SetInitialValueBeforeDelay="True"
+                                             From="0"
+                                             To="1"
+                                             Duration="0:0:0.8" />
+            </animations:Implicit.ShowAnimations>
+            <animations:Implicit.HideAnimations>
+                <animations:TranslationAnimation From="0,0,0"
+                                                 To="0,-12,0"
+                                                 Duration="0:0:0.8" />
+                <animations:ScaleAnimation From="1"
+                                           To="0.8"
+                                           Duration="0:0:0.8" />
+                <animations:OpacityAnimation From="1"
+                                             To="0"
+                                             Duration="0:0:0.8" />
+            </animations:Implicit.HideAnimations>
+
+            <controls:AnimatedTextBlock x:Name="MessageText"
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,4,0,0"
+                                        Foreground="{StaticResource DarkGrey}"
+                                        Text="Accepting case..." />
+        </Grid>
+    </RelativePanel>
+</Page>

@@ -1,0 +1,155 @@
+﻿<Page x:Class="ContosoInsurance.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+      xmlns:brushes="using:ContosoInsurance.Brushes"
+      xmlns:controls="using:ContosoInsurance.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="BackgroundPanel">
+            <Image x:Name="BackgroundImage"
+                   extensions:VisualExtensions.NormalizedCenterPoint="0.5,0.5,0"
+                   ImageOpened="OnBackgroundImageOpened"
+                   Source="ms-appx:///Assets/MSC17_dam_004.jpg"
+                   Stretch="UniformToFill"
+                   Visibility="Collapsed">
+                <animations:Implicit.ShowAnimations>
+                    <animations:ScaleAnimation From="1.6"
+                                               To="1"
+                                               Duration="0:0:2" />
+                    <animations:OpacityAnimation From="0"
+                                                 To="1"
+                                                 Duration="0:0:2" />
+                </animations:Implicit.ShowAnimations>
+            </Image>
+
+            <Rectangle x:Name="TintShade">
+                <Rectangle.Fill>
+                    <brushes:BackdropTintBlurBrush BlurAmount="0"
+                                                   FallbackColor="{StaticResource lightBlue}"
+                                                   TintColor="{StaticResource lightBlue}" />
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Rectangle x:Name="DarkOverlay" Fill="{StaticResource Black20}" />
+        </Grid>
+
+        <!--  1. NavigationView starts  -->
+        <NavigationView x:Name="MainNav"
+                        IsSettingsVisible="False"
+                        OpenPaneLength="400">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="HOME" Tag="HomePage" />
+                <NavigationViewItem Tag="CasesPage">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="CASES" TextLineBounds="Tight" />
+                        <Border x:Name="NotificationIndicator"
+                                Width="14"
+                                Height="14"
+                                Margin="2,-8,0,0"
+                                Background="{StaticResource Red}"
+                                CornerRadius="7"
+                                Visibility="Collapsed">
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="8"
+                                       FontWeight="Black"
+                                       Foreground="White"
+                                       Text="1"
+                                       TextLineBounds="Tight" />
+                        </Border>
+                    </StackPanel>
+                </NavigationViewItem>
+                <NavigationViewItem Content="REPORTS" Tag="ReportsPage" />
+                <NavigationViewItemSeparator />
+                <NavigationViewItem Content="HELP" Tag="HelpPage" />
+            </NavigationView.MenuItems>
+
+            <NavigationView.Header>
+                <StackPanel VerticalAlignment="Top"
+                            Orientation="Horizontal"
+                            Spacing="16">
+                    <Rectangle Width="3"
+                               Height="108"
+                               Margin="0,-80,0,0"
+                               Fill="{StaticResource LightGrey}" />
+                    <controls:AnimatedTextBlock Foreground="White" Text="{x:Bind Mode=OneWay, Path=GetMenuItemName(MainNav.SelectedItem)}" />
+                </StackPanel>
+            </NavigationView.Header>
+            <NavigationView.PaneFooter>
+                <Ellipse Width="40"
+                         Height="40"
+                         HorizontalAlignment="Left"
+                         Stroke="White"
+                         StrokeThickness="2"
+                         Tapped="OnUserAvatarTapped">
+                    <Ellipse.Fill>
+                        <ImageBrush>
+                            <ImageBrush.ImageSource>
+                                <BitmapImage x:Name="ProfileImage"
+                                             DecodePixelHeight="128"
+                                             DecodePixelWidth="128"
+                                             UriSource="ms-appx:///Assets/Avatars/1.jpg" />
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </NavigationView.PaneFooter>
+            <Frame x:Name="ContentFrame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <EntranceNavigationTransitionInfo />
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+        <!--  1. NavigationView ends  -->
+
+        <StackPanel x:Name="AppNamePanel"
+                    Margin="92,42,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal"
+                    Visibility="{x:Bind Mode=OneWay, Path=MainNav.IsPaneOpen}">
+
+            <Viewbox Width="20"
+                     Height="20"
+                     Margin="0,-5,8,0"
+                     StretchDirection="DownOnly">
+                <FontIcon FontFamily="Segoe MDL2 Assets"
+                          Foreground="{StaticResource LightGrey}"
+                          Glyph="&#xEC0A;" />
+            </Viewbox>
+
+            <TextBlock x:Name="Title"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Text="CONTOSO INSUR." />
+        </StackPanel>
+
+        <StackPanel x:Name="Deco"
+                    Margin="0,0,0,80"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Spacing="8">
+            <Rectangle Width="24"
+                       Height="6"
+                       Fill="{StaticResource LightGrey}" />
+            <Rectangle Width="24"
+                       Height="3"
+                       Fill="{StaticResource LightGrey}" />
+        </StackPanel>
+
+        <controls:NotificationDialog x:Name="NotificationDialog"
+                                     Margin="60,40,52,40"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Bottom" />
+    </Grid>
+</Page>
