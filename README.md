@@ -3,6 +3,10 @@ This UWP app was designed to showcase how Fluent Design, Windows Timeline and Ad
 
 [View the full WDD Keynote here](https://www.youtube.com/watch?v=D6YAJxFsmuM)
 
+Running the project
+------
+You will need Visual Studio 2017 and Windows 10 Insider Build along with the SDK version `17110` or greater.
+
 Key UI components
 ------
 
@@ -10,7 +14,7 @@ Key UI components
 
 * The `NavigationView` contains the main menu and a `ContentFrame` that basically hosts all other pages such as `HomePage`, `CasesPage` and `CasePage`.
     * `HomePage` contains the Telerik `RadCartesianChart` control and a few other dummy UI elements.
-    * `CasesPage` contains an extended `AdaptiveGridView` control that displays a list of cases.
+    * `CasesPage` contains an extended `AdaptiveGridView` control that displays a list of cases. A new `RefreshContainer` control is used to wrap the `AdaptiveGridView` for enabling the *pull-to-refresh* gesture.
     * `CasePage` is the detail page of one particular case. This is where we create user activities and push the adatpive card (`timeline.json`) to Windows Timeline.
 * `NotificationDialog` contains a Bing `MapControl`, a `ListView` that shows a list of adjusters, and some adaptive card UI that's generated from `bot1.json`, `bot2.json` and `bot3.json`. The use of `AcrylicBrush` is in this control too.
 
